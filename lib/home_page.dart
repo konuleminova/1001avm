@@ -100,7 +100,7 @@ class HomePageState extends State<HomePage> {
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
-                iconTheme: IconThemeData(color: const Color(0xFF323F48)),
+                iconTheme: IconThemeData(color: fixedColor.withOpacity(0.7)),
                 expandedHeight: 150.0,
                 backgroundColor: Colors.white,
                 elevation: 4.0,
