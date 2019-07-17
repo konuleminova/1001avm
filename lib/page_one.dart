@@ -84,7 +84,7 @@ class PageOneState extends State<PageOne> {
             items: child,
             autoPlay: true,
             enlargeCenterPage: true,
-            aspectRatio: 2.5,
+            aspectRatio: 3,
             onPageChanged: (index) {
               setState(() {
                 _current = index;
