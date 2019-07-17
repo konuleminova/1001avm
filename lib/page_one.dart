@@ -118,7 +118,11 @@ class PageOneState extends State<PageOne> {
               shrinkWrap: true,
               physics: ClampingScrollPhysics(),
               itemBuilder: (BuildContext context, int index) {
-                return ListItemOne();
+                return ListItemOne(
+                  title: "New Iphone in our store!",
+                  img: imgList[index],
+                  subtitle: "Shop now",
+                );
               },
               itemCount: 3,
             )
