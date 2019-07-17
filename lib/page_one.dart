@@ -1,4 +1,5 @@
 import 'package:avm1001/constants.dart';
+import 'package:avm1001/item/list_item1.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -77,42 +78,51 @@ class PageOneState extends State<PageOne> {
     ).toList();
 
     return Scaffold(
+        backgroundColor: Colors.white,
         body: ListView(
-      children: <Widget>[
-        Container(
-          child: CarouselSlider(
-            items: child,
-            autoPlay: true,
-            enlargeCenterPage: true,
-            aspectRatio: 3,
-            onPageChanged: (index) {
-              setState(() {
-                _current = index;
-              });
-            },
-          ),
-          margin: EdgeInsets.all(8),
-        ),
-        Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Padding(
-                padding: EdgeInsets.all(8),
-                child: Text("Special Offer",
-                    style: TextStyle(
-                      fontSize: 22,
-                      color: fixedColor.withOpacity(0.7),
-                    ))),
             Container(
-              child: new Divider(
-                color: Colors.orange,
+              child: CarouselSlider(
+                items: child,
+                autoPlay: true,
+                enlargeCenterPage: true,
+                aspectRatio: 3,
+                onPageChanged: (index) {
+                  setState(() {
+                    _current = index;
+                  });
+                },
               ),
-              width: 150,
+              margin: EdgeInsets.all(8),
             ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                    padding: EdgeInsets.all(8),
+                    child: Text("Special Offer",
+                        style: TextStyle(
+                          fontSize: 22,
+                          color: fixedColor.withOpacity(0.7),
+                        ))),
+                Container(
+                  child: new Divider(
+                    color: Colors.orange,
+                  ),
+                  width: 150,
+                ),
+              ],
+            ),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: ClampingScrollPhysics(),
+              itemBuilder: (BuildContext context, int index) {
+                return ListItemOne();
+              },
+              itemCount: 3,
+            )
           ],
-        )
-      ],
-    ));
+        ));
   }
 }
