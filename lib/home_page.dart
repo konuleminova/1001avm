@@ -1,4 +1,6 @@
 import 'package:avm1001/constants.dart';
+import 'package:avm1001/nested_navigator.dart';
+import 'package:avm1001/pages.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -10,6 +12,8 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
+  final GlobalKey<NavigatorState> navigationKey = GlobalKey<NavigatorState>();
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -130,7 +134,9 @@ class HomePageState extends State<HomePage> {
                                         padding: EdgeInsets.only(left: 16),
                                         child: Text(
                                           "Search...",
-                                          style: TextStyle(color: fixedColor.withOpacity(0.5)),
+                                          style: TextStyle(
+                                              color:
+                                                  fixedColor.withOpacity(0.5)),
                                         ),
                                       ),
                                       decoration: BoxDecoration(
@@ -170,8 +176,15 @@ class HomePageState extends State<HomePage> {
               ),
             ];
           },
-          body: Center(
-            child: Text("Sample Text"),
+          body: NestedNavigator(
+            navigationKey: navigationKey,
+            initialRoute: '/',
+            routes: {
+              // default rout as '/' is necessary!
+              '/': (context) => PageOne(),
+              '/two': (context) => PageTwo(),
+              '/three': (context) => PageThree(),
+            },
           ),
         ),
         bottomNavigationBar: new Theme(
