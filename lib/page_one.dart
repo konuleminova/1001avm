@@ -27,9 +27,11 @@ class PageOneState extends State<PageOne> {
   }
 
   int _current = 0;
+  double width;
 
   @override
   Widget build(BuildContext context) {
+    width = MediaQuery.of(context).size.width;
     // TODO: implement build
     final List child = map<Widget>(
       imgList,
@@ -125,6 +127,59 @@ class PageOneState extends State<PageOne> {
                 );
               },
               itemCount: 3,
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  width: width,
+                  child: Text(
+                    "Featured",
+                    style: TextStyle(color: fixedColor, fontSize: 18),
+                  ),
+                  padding: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                      color: Colors.orange,
+                      border: Border(bottom: BorderSide(color: Colors.orange))),
+                  alignment: Alignment.center,
+                ),
+                Container(
+                  width: width,
+                  child: Text(
+                    "New",
+                    style: TextStyle(color: fixedColor, fontSize: 18),
+                  ),
+                  padding: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border(bottom: BorderSide(color: Colors.orange))),
+                  alignment: Alignment.center,
+                ),
+                Container(
+                  width: width,
+                  child: Text(
+                    "Top Rated",
+                    style: TextStyle(color: fixedColor, fontSize: 18),
+                  ),
+                  padding: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border(bottom: BorderSide(color: Colors.orange))),
+                  alignment: Alignment.center,
+                )
+              ],
+            ),
+            SizedBox(height: 30.0,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Icon(Icons.navigate_before),
+                Icon(Icons.navigate_next)
+              ],
             )
           ],
         ));
