@@ -1,5 +1,6 @@
 import 'package:avm1001/constants.dart';
 import 'package:avm1001/item/list_item1.dart';
+import 'package:avm1001/item/list_item2.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -173,14 +174,18 @@ class PageOneState extends State<PageOne> {
                 )
               ],
             ),
-            SizedBox(height: 30.0,),
+            SizedBox(
+              height: 30.0,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Icon(Icons.navigate_before),
                 Icon(Icons.navigate_next)
               ],
-            )
+            ),
+            SizedBox(height: 20,),
+            ListItemTwo()
           ],
         ));
   }
