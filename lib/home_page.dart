@@ -114,7 +114,7 @@ class HomePageState extends State<HomePage> {
                             Container(
                               height: 80,
                               child: Image.network(
-                                "http://www.1001avm.az/img/gobay-logo-1563259382.jpg",
+                                "http://www.1001avm.az/img/gobay-logo-1563283217.jpg",
                               ),
                               padding: EdgeInsets.only(top: 16),
                             ),
