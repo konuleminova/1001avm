@@ -1,6 +1,7 @@
 import 'package:avm1001/constants.dart';
 import 'package:avm1001/item/list_item1.dart';
 import 'package:avm1001/item/list_item2.dart';
+import 'package:avm1001/model/product.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -17,6 +18,11 @@ class PageOneState extends State<PageOne> {
     'http://www.1001avm.az/modules/htmlbanners1/views/img/upload/sample-1.png',
     'http://www.1001avm.az/modules/htmlbanners1/views/img/upload/sample-2.png',
     'http://www.1001avm.az/modules/htmlbanners1/views/img/upload/sample-3.png',
+  ];
+  final List<String> productImgList = [
+    'http://www.1001avm.az/2570-home_default/vestel.jpg',
+    'http://www.1001avm.az/2588-home_default/lg-6100.jpg',
+    'http://www.1001avm.az/2573-large_default/toshiba.jpg',
   ];
 
   List<T> map<T>(List list, Function handler) {
@@ -184,8 +190,22 @@ class PageOneState extends State<PageOne> {
                 Icon(Icons.navigate_next)
               ],
             ),
-            SizedBox(height: 20,),
-            ListItemTwo()
+            SizedBox(
+              height: 20,
+            ),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: ClampingScrollPhysics(),
+              itemBuilder: (BuildContext context, int index) {
+                return ListItemTwo(
+                  product: Product(
+                      img: productImgList[index],
+                      title: "THOSHIBA",
+                      price: "1234565678 AZN"),
+                );
+              },
+              itemCount: 3,
+            )
           ],
         ));
   }

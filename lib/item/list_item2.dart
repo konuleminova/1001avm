@@ -1,7 +1,12 @@
 import 'package:avm1001/constants.dart';
+import 'package:avm1001/model/product.dart';
 import 'package:flutter/material.dart';
 
 class ListItemTwo extends StatefulWidget {
+  Product product;
+
+  ListItemTwo({this.product});
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -10,8 +15,11 @@ class ListItemTwo extends StatefulWidget {
 }
 
 class ListItemTwoState extends State<ListItemTwo> {
+  Product product;
+
   @override
   Widget build(BuildContext context) {
+    product = widget.product;
     // TODO: implement build
     return Align(
         alignment: Alignment.center,
@@ -43,8 +51,12 @@ class ListItemTwoState extends State<ListItemTwo> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Image.network(
-                        "http://www.1001avm.az/2572-home_default/skyworth.jpg"),
+                    Container(
+                      alignment: AlignmentDirectional.center,
+                      child: Image.network(product.img),
+                      width: 200,
+                      margin: EdgeInsets.only(top: 8),
+                    ),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -60,7 +72,7 @@ class ListItemTwoState extends State<ListItemTwo> {
                       height: 20,
                     ),
                     Text(
-                      "TOSHIBA",
+                      product.title,
                       style: TextStyle(
                           fontSize: 20, color: fixedColor.withOpacity(0.3)),
                     ),
@@ -73,7 +85,7 @@ class ListItemTwoState extends State<ListItemTwo> {
                         Padding(
                           padding: EdgeInsets.only(left: 16),
                           child: Text(
-                            "1234546 AZN",
+                            product.price,
                             style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -95,7 +107,7 @@ class ListItemTwoState extends State<ListItemTwo> {
                       ],
                     ),
                     Divider(
-                      color: fixedColor.withOpacity(0.5),
+                      color: fixedColor.withOpacity(0.1),
                     ),
                     SizedBox(
                       height: 8.0,
@@ -153,6 +165,6 @@ class ListItemTwoState extends State<ListItemTwo> {
   RatingStar() => Icon(
         Icons.star_border,
         color: Colors.orange,
-        size: 20,
+        size: 18,
       );
 }
