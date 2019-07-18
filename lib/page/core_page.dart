@@ -110,7 +110,7 @@ class CorePageState extends State<CorePage> {
                 backgroundColor: Colors.white,
                 elevation: 4.0,
                 floating: false,
-                pinned: true,
+                pinned: false,
                 flexibleSpace: FlexibleSpaceBar(
                     centerTitle: true,
                     background: Container(
