@@ -195,7 +195,7 @@ class PageOneState extends State<PageOne> {
             ),
             Container(
                 height: 550.0,
-                padding: EdgeInsets.only(left: 4,right: 4),
+                padding: EdgeInsets.only(left: 4, right: 4),
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (BuildContext context, int index) {
