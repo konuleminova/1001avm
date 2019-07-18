@@ -1,4 +1,4 @@
-import 'package:avm1001/core_page.dart';
+import 'package:avm1001/page/core_page.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());

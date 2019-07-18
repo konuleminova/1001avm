@@ -1,7 +1,7 @@
-import 'package:avm1001/constants.dart';
-import 'package:avm1001/nested_navigator.dart';
-import 'package:avm1001/home_page.dart';
-import 'package:avm1001/pages.dart';
+import 'package:avm1001/utility/constants.dart';
+import 'package:avm1001/utility/nested_navigator.dart';
+import 'package:avm1001/page/home_page.dart';
+import 'package:avm1001/page/pages.dart';
 import 'package:flutter/material.dart';
 
 class CorePage extends StatefulWidget {

@@ -1,4 +1,4 @@
-import 'package:avm1001/constants.dart';
+import 'package:avm1001/utility/constants.dart';
 import 'package:avm1001/model/product.dart';
 import 'package:flutter/material.dart';
 
