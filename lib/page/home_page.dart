@@ -30,6 +30,10 @@ class HomePageState extends State<HomePage> {
     'http://www.1001avm.az/img/m/22-manufacturer_default.jpg',
   ];
 
+  bool isOnclick = false;
+
+  bool isOnclick2=false;
+
   List<T> map<T>(List list, Function handler) {
     List<T> result = [];
     for (var i = 0; i < list.length; i++) {
@@ -197,10 +201,21 @@ class HomePageState extends State<HomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Container(
-                    child: Icon(
-                      Icons.navigate_before,
-                      color: fixedColor.withOpacity(0.3),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isOnclick = true;
+                      });
+                    },
+                    child: Container(
+                      child: Icon(Icons.navigate_before,
+                          color: !isOnclick
+                              ? fixedColor.withOpacity(0.3)
+                              : Colors.white),
+                      decoration: BoxDecoration(
+                          color:
+                              isOnclick ? Colors.orange : Colors.transparent),
+                      padding: EdgeInsets.all(3),
                     ),
                   ),
                   Container(
@@ -217,17 +232,30 @@ class HomePageState extends State<HomePage> {
                       },
                     ),
                   ),
-                  Container(
-                    child: Icon(
-                      Icons.navigate_next,
-                      color: fixedColor.withOpacity(0.3),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isOnclick2 = true;
+                      });
+                    },
+                    child: Container(
+                      child: Icon(Icons.navigate_next,
+                          color: !isOnclick2
+                              ? fixedColor.withOpacity(0.3)
+                              : Colors.white),
+                      decoration: BoxDecoration(
+                          color:
+                          isOnclick2 ? Colors.orange : Colors.transparent),
+                      padding: EdgeInsets.all(3),
                     ),
                   ),
                 ],
               ),
               margin: EdgeInsets.all(8),
             ),
-            SizedBox(height: 20,)
+            SizedBox(
+              height: 20,
+            )
           ],
         ));
   }
