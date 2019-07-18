@@ -193,19 +193,24 @@ class PageOneState extends State<PageOne> {
             SizedBox(
               height: 20,
             ),
-            ListView.builder(
-              shrinkWrap: true,
-              physics: ClampingScrollPhysics(),
-              itemBuilder: (BuildContext context, int index) {
-                return ListItemTwo(
-                  product: Product(
-                      img: productImgList[index],
-                      title: "THOSHIBA",
-                      price: "1234565678 AZN"),
-                );
-              },
-              itemCount: 3,
-            )
+            Container(
+                height: 550.0,
+                padding: EdgeInsets.only(left: 4,right: 4),
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Padding(
+                      padding: EdgeInsets.all(4),
+                      child: ListItemTwo(
+                        product: Product(
+                            img: productImgList[index],
+                            title: "THOSHIBA",
+                            price: "1234565678 AZN"),
+                      ),
+                    );
+                  },
+                  itemCount: 3,
+                )),
           ],
         ));
   }

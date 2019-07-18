@@ -158,7 +158,7 @@ class ListItemTwoState extends State<ListItemTwo> {
               ],
             ),
           ),
-          elevation: 7.0,
+          elevation: 1.0,
         ));
   }
 
