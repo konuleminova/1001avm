@@ -1,8 +1,9 @@
 import 'package:avm1001/constants.dart';
-import 'package:avm1001/nested_navigator.dart';
-import 'package:avm1001/page_one.dart';
-import 'package:avm1001/pages.dart';
+import 'package:avm1001/item/list_item1.dart';
+import 'package:avm1001/item/list_item2.dart';
+import 'package:avm1001/model/product.dart';
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -13,242 +14,204 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  final GlobalKey<NavigatorState> navigationKey = GlobalKey<NavigatorState>();
+  final List<String> imgList = [
+    'http://www.1001avm.az/modules/htmlbanners1/views/img/upload/sample-1.png',
+    'http://www.1001avm.az/modules/htmlbanners1/views/img/upload/sample-2.png',
+    'http://www.1001avm.az/modules/htmlbanners1/views/img/upload/sample-3.png',
+  ];
+  final List<String> productImgList = [
+    'http://www.1001avm.az/2570-home_default/vestel.jpg',
+    'http://www.1001avm.az/2588-home_default/lg-6100.jpg',
+    'http://www.1001avm.az/2573-large_default/toshiba.jpg',
+  ];
+
+  List<T> map<T>(List list, Function handler) {
+    List<T> result = [];
+    for (var i = 0; i < list.length; i++) {
+      result.add(handler(i, list[i]));
+    }
+    return result;
+  }
+
+  int _current = 0;
+  double width;
 
   @override
   Widget build(BuildContext context) {
+    width = MediaQuery.of(context).size.width;
     // TODO: implement build
-    return new Scaffold(
-        drawer: Drawer(
-            elevation: 12,
-            child: Container(
-              padding: EdgeInsets.all(8),
-              color: fixedColor,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  DrawerHeader(
-                    child: Container(
-                      margin: EdgeInsets.all(32),
-                      width: 100,
-                    ),
-                    decoration: BoxDecoration(
-                        color: const Color(0xFF323F48),
-                        image: DecorationImage(
-                            image: AssetImage(
-                              "assets/logo.jpg",
-                            ),
-                            fit: BoxFit.contain)),
-                  ),
-                  ListTile(
-                    title: Text(
-                      "Account",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    trailing: Icon(
-                      Icons.keyboard_arrow_down,
-                      color: Colors.white,
-                    ),
-                  ),
-                  Divider(
-                    color: Colors.white,
-                  ),
-                  ListTile(
-                    title: Text("Categories",
-                        style: TextStyle(color: Colors.white)),
-                    trailing: Icon(
-                      Icons.keyboard_arrow_down,
-                      color: Colors.white,
-                    ),
-                  ),
-                  Divider(
-                    color: Colors.white,
-                  ),
-                  ListTile(
-                    title: Text("Information",
-                        style: TextStyle(color: Colors.white)),
-                    trailing: Icon(
-                      Icons.keyboard_arrow_down,
-                      color: Colors.white,
-                    ),
-                  ),
-                  Divider(
-                    color: Colors.white,
-                  ),
-                  ListTile(
-                    title:
-                        Text("About Us", style: TextStyle(color: Colors.white)),
-                    trailing: Icon(
-                      Icons.keyboard_arrow_down,
-                      color: Colors.white,
-                    ),
-                  ),
-                  Divider(
-                    color: Colors.white,
-                  ),
-                  ListTile(
-                    title:
-                        Text("Contacts", style: TextStyle(color: Colors.white)),
-                    trailing: Icon(
-                      Icons.keyboard_arrow_down,
-                      color: Colors.white,
-                    ),
-                  ),
-                  Divider(
-                    color: Colors.white,
-                  )
-                ],
+    final List child = map<Widget>(
+      imgList,
+      (index, i) {
+        return Container(
+          margin: EdgeInsets.all(5.0),
+          child: ClipRRect(
+            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+            child: Stack(children: <Widget>[
+              Image.network(
+                i,
+                fit: BoxFit.contain,
+                width: 500.0,
               ),
-            )),
-        body: NestedScrollView(
-          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-            return <Widget>[
-              SliverAppBar(
-                iconTheme: IconThemeData(color: fixedColor.withOpacity(0.7)),
-                expandedHeight: 150.0,
-                backgroundColor: Colors.white,
-                elevation: 4.0,
-                floating: false,
-                pinned: true,
-                flexibleSpace: FlexibleSpaceBar(
-                    centerTitle: true,
-                    background: Container(
-                        child: Column(
-                          children: <Widget>[
-                            Container(
-                              height: 80,
-                              child: Image.network(
-                                "http://www.1001avm.az/img/gobay-logo-1563430851.jpg",
-                              ),
-                              padding: EdgeInsets.only(top: 16),
-                            ),
-                            Divider(
-                              color: fixedColor.withOpacity(0.5),
-                            ),
-                            Container(
-                              child: Row(
-                                children: <Widget>[
-                                  Expanded(
-                                    child: Container(
-                                      child: Padding(
-                                        padding: EdgeInsets.only(left: 16),
-                                        child: Text(
-                                          "Search...",
-                                          style: TextStyle(
-                                              color:
-                                                  fixedColor.withOpacity(0.5)),
-                                        ),
-                                      ),
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(40),
-                                              bottomLeft: Radius.circular(40)),
-                                          color: Colors.white),
-                                      padding: EdgeInsets.all(8),
-                                    ),
-                                    flex: 1,
-                                  ),
-                                  Container(
-                                    child: Icon(Icons.search),
-                                    padding: EdgeInsets.all(5),
-                                  )
-                                ],
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                              ),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(40),
-                                  color: Colors.orange.withOpacity(0.7)),
-                              padding: EdgeInsets.all(1),
-                              margin: EdgeInsets.all(8),
-                            ),
-                          ],
-                        ),
-                        margin: EdgeInsets.only(top: 20))),
-                actions: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(
-                      right: 10,
+              Positioned(
+                bottom: 0.0,
+                left: 0.0,
+                right: 0.0,
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Color.fromARGB(200, 0, 0, 0),
+                        Color.fromARGB(0, 0, 0, 0)
+                      ],
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
                     ),
-                    child: Icon(Icons.shopping_basket),
-                  )
-                ],
+                  ),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                  child: Text(
+                    'No. $index image',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
               ),
-            ];
-          },
-          body: NestedNavigator(
-            navigationKey: navigationKey,
-            initialRoute: '/',
-            routes: {
-              // default rout as '/' is necessary!
-              '/': (context) => PageOne(),
-              '/two': (context) => PageTwo(),
-              '/three': (context) => PageThree(),
-            },
+            ]),
           ),
-        ),
-        bottomNavigationBar: new Theme(
-            data: Theme.of(context).copyWith(canvasColor: fixedColor),
-            // sets the inactive color of the `BottomNavigationBar`
-            child: Container(
-              color: fixedColor,
-              padding: EdgeInsets.all(16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Container(
-                    child: Icon(
-                      Icons.person_outline,
-                      color: Colors.white,
-                    ),
-                    decoration: BoxDecoration(
-                        border:
-                            Border.all(color: Colors.white.withOpacity(0.5))),
-                    padding: EdgeInsets.all(4),
-                    width: 40,
-                    height: 40,
-                  ),
-                  Container(
-                    child: Text(
-                      "EN",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    decoration: BoxDecoration(
-                        border:
-                            Border.all(color: Colors.white.withOpacity(0.5))),
-                    padding: EdgeInsets.all(4),
-                    width: 40,
-                    height: 40,
-                    alignment: Alignment.center,
-                  ),
-                  Container(
-                    child: Text(
-                      "AZN",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    decoration: BoxDecoration(
-                        border:
-                            Border.all(color: Colors.white.withOpacity(0.5))),
-                    padding: EdgeInsets.all(4),
-                    width: 40,
-                    height: 40,
-                    alignment: Alignment.center,
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(4),
-                    child: Icon(
-                      Icons.phone,
-                      color: Colors.white,
-                    ),
-                    decoration: BoxDecoration(
-                        border:
-                            Border.all(color: Colors.white.withOpacity(0.5))),
-                    width: 40,
-                    height: 40,
-                  ),
-                ],
+        );
+      },
+    ).toList();
+
+    return Scaffold(
+        backgroundColor: Colors.white,
+        body: ListView(
+          children: <Widget>[
+            Container(
+              child: CarouselSlider(
+                items: child,
+                autoPlay: true,
+                enlargeCenterPage: true,
+                aspectRatio: 3,
+                onPageChanged: (index) {
+                  setState(() {
+                    _current = index;
+                  });
+                },
               ),
-            )));
+              margin: EdgeInsets.all(8),
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                    padding: EdgeInsets.all(8),
+                    child: Text("Special Offer",
+                        style: TextStyle(
+                          fontSize: 22,
+                          color: fixedColor.withOpacity(0.7),
+                        ))),
+                Container(
+                  child: new Divider(
+                    color: Colors.orange,
+                  ),
+                  width: 150,
+                ),
+              ],
+            ),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: ClampingScrollPhysics(),
+              itemBuilder: (BuildContext context, int index) {
+                return ListItemOne(
+                  title: "New Iphone in our store!",
+                  img: imgList[index],
+                  subtitle: "Shop now",
+                );
+              },
+              itemCount: 3,
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  width: width,
+                  child: Text(
+                    "Featured",
+                    style: TextStyle(color: fixedColor, fontSize: 18),
+                  ),
+                  padding: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                      color: Colors.orange,
+                      border: Border(bottom: BorderSide(color: Colors.orange))),
+                  alignment: Alignment.center,
+                ),
+                Container(
+                  width: width,
+                  child: Text(
+                    "New",
+                    style: TextStyle(color: fixedColor, fontSize: 18),
+                  ),
+                  padding: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border(bottom: BorderSide(color: Colors.orange))),
+                  alignment: Alignment.center,
+                ),
+                Container(
+                  width: width,
+                  child: Text(
+                    "Top Rated",
+                    style: TextStyle(color: fixedColor, fontSize: 18),
+                  ),
+                  padding: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border(bottom: BorderSide(color: Colors.orange))),
+                  alignment: Alignment.center,
+                )
+              ],
+            ),
+            SizedBox(
+              height: 30.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Icon(Icons.navigate_before),
+                Icon(Icons.navigate_next)
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+                height: 550.0,
+                padding: EdgeInsets.only(left: 4, right: 4),
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Padding(
+                      padding: EdgeInsets.all(4),
+                      child: ListItemTwo(
+                        product: Product(
+                            img: productImgList[index],
+                            title: "THOSHIBA",
+                            price: "1234565678 AZN"),
+                      ),
+                    );
+                  },
+                  itemCount: 3,
+                )),
+          ],
+        ));
   }
 }
