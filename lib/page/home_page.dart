@@ -24,6 +24,11 @@ class HomePageState extends State<HomePage> {
     'http://www.1001avm.az/2588-home_default/lg-6100.jpg',
     'http://www.1001avm.az/2573-large_default/toshiba.jpg',
   ];
+  final List<String> brandImgList = [
+    'http://www.1001avm.az/img/m/20-manufacturer_default.jpg',
+    'http://www.1001avm.az/img/m/21-manufacturer_default.jpg',
+    'http://www.1001avm.az/img/m/22-manufacturer_default.jpg',
+  ];
 
   List<T> map<T>(List list, Function handler) {
     List<T> result = [];
@@ -40,51 +45,6 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     width = MediaQuery.of(context).size.width;
     // TODO: implement build
-    final List child = map<Widget>(
-      imgList,
-      (index, i) {
-        return Container(
-          margin: EdgeInsets.all(5.0),
-          child: ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(5.0)),
-            child: Stack(children: <Widget>[
-              Image.network(
-                i,
-                fit: BoxFit.contain,
-                width: 500.0,
-              ),
-              Positioned(
-                bottom: 0.0,
-                left: 0.0,
-                right: 0.0,
-                child: Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Color.fromARGB(200, 0, 0, 0),
-                        Color.fromARGB(0, 0, 0, 0)
-                      ],
-                      begin: Alignment.bottomCenter,
-                      end: Alignment.topCenter,
-                    ),
-                  ),
-                  padding:
-                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                  child: Text(
-                    'No. $index image',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-            ]),
-          ),
-        );
-      },
-    ).toList();
 
     return Scaffold(
         backgroundColor: Colors.white,
@@ -92,7 +52,7 @@ class HomePageState extends State<HomePage> {
           children: <Widget>[
             Container(
               child: CarouselSlider(
-                items: child,
+                items: getChild(),
                 autoPlay: true,
                 enlargeCenterPage: true,
                 aspectRatio: 3,
@@ -211,7 +171,135 @@ class HomePageState extends State<HomePage> {
                   },
                   itemCount: 3,
                 )),
+            SizedBox(
+              height: 20,
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                    padding: EdgeInsets.all(8),
+                    child: Text("Our brands",
+                        style: TextStyle(
+                          fontSize: 22,
+                          color: fixedColor.withOpacity(0.7),
+                        ))),
+                Container(
+                  child: new Divider(
+                    color: Colors.orange,
+                  ),
+                  width: 150,
+                ),
+              ],
+            ),
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                    child: Icon(
+                      Icons.navigate_before,
+                      color: fixedColor.withOpacity(0.3),
+                    ),
+                  ),
+                  Container(
+                    width: 250,
+                    child: CarouselSlider(
+                      items: getBrandChild(),
+                      autoPlay: true,
+                      enlargeCenterPage: true,
+                      aspectRatio: 3,
+                      onPageChanged: (index) {
+                        setState(() {
+                          _current = index;
+                        });
+                      },
+                    ),
+                  ),
+                  Container(
+                    child: Icon(
+                      Icons.navigate_next,
+                      color: fixedColor.withOpacity(0.3),
+                    ),
+                  ),
+                ],
+              ),
+              margin: EdgeInsets.all(8),
+            ),
+            SizedBox(height: 20,)
           ],
         ));
+  }
+
+  getChild() {
+    final List child = map<Widget>(
+      imgList,
+      (index, i) {
+        return Container(
+          margin: EdgeInsets.all(5.0),
+          child: ClipRRect(
+            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+            child: Stack(children: <Widget>[
+              Image.network(
+                i,
+                fit: BoxFit.contain,
+                width: 500.0,
+              ),
+              Positioned(
+                bottom: 0.0,
+                left: 0.0,
+                right: 0.0,
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Color.fromARGB(200, 0, 0, 0),
+                        Color.fromARGB(0, 0, 0, 0)
+                      ],
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                    ),
+                  ),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                  child: Text(
+                    'No. $index image',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ]),
+          ),
+        );
+      },
+    ).toList();
+    return child;
+  }
+
+  getBrandChild() {
+    final List child = map<Widget>(
+      brandImgList,
+      (index, i) {
+        return Container(
+          margin: EdgeInsets.all(5.0),
+          child: ClipRRect(
+            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+            child: Stack(children: <Widget>[
+              Image.network(
+                i,
+                fit: BoxFit.contain,
+                width: 500.0,
+              ),
+            ]),
+          ),
+        );
+      },
+    ).toList();
+    return child;
   }
 }
