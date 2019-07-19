@@ -15,6 +15,8 @@ class CorePage extends StatefulWidget {
 class CorePageState extends State<CorePage> {
   final GlobalKey<NavigatorState> navigationKey = GlobalKey<NavigatorState>();
 
+  var _itemExtent=1600.0;
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -101,92 +103,102 @@ class CorePageState extends State<CorePage> {
                 ],
               ),
             )),
-        body: NestedScrollView(
-          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-            return <Widget>[
-              SliverAppBar(
-                iconTheme: IconThemeData(color: fixedColor.withOpacity(0.7)),
-                expandedHeight: 150.0,
-                backgroundColor: Colors.white,
-                elevation: 4.0,
-                floating: false,
-                pinned: false,
-                flexibleSpace: FlexibleSpaceBar(
-                    centerTitle: true,
-                    background: Container(
-                        child: Column(
-                          children: <Widget>[
-                            Container(
-                              height: 80,
-                              child: Image.network(
-                                "http://www.1001avm.az/img/gobay-logo-1563430851.jpg",
-                              ),
-                              padding: EdgeInsets.only(top: 16),
+        //: NestedScrollView(
+        //          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+        //            return <Widget>[
+        //              SliverAppBar(
+        body: CustomScrollView(
+          slivers: <Widget>[
+            SliverAppBar(
+              iconTheme: IconThemeData(color: fixedColor.withOpacity(0.7)),
+              expandedHeight: 150.0,
+              backgroundColor: Colors.white,
+              elevation: 4.0,
+              floating: false,
+              pinned: false,
+              flexibleSpace: FlexibleSpaceBar(
+                  centerTitle: true,
+                  background: Container(
+                      child: Column(
+                        children: <Widget>[
+                          Container(
+                            height: 80,
+                            child: Image.network(
+                              "http://www.1001avm.az/img/gobay-logo-1563430851.jpg",
                             ),
-                            Divider(
-                              color: fixedColor.withOpacity(0.5),
-                            ),
-                            Container(
-                              child: Row(
-                                children: <Widget>[
-                                  Expanded(
-                                    child: Container(
-                                      child: Padding(
-                                        padding: EdgeInsets.only(left: 16),
-                                        child: Text(
-                                          "Search...",
-                                          style: TextStyle(
-                                              color:
-                                                  fixedColor.withOpacity(0.5)),
-                                        ),
+                            padding: EdgeInsets.only(top: 16),
+                          ),
+                          Divider(
+                            color: fixedColor.withOpacity(0.5),
+                          ),
+                          Container(
+                            child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Container(
+                                    child: Padding(
+                                      padding: EdgeInsets.only(left: 16),
+                                      child: Text(
+                                        "Search...",
+                                        style: TextStyle(
+                                            color: fixedColor.withOpacity(0.5)),
                                       ),
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(40),
-                                              bottomLeft: Radius.circular(40)),
-                                          color: Colors.white),
-                                      padding: EdgeInsets.all(8),
                                     ),
-                                    flex: 1,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(40),
+                                            bottomLeft: Radius.circular(40)),
+                                        color: Colors.white),
+                                    padding: EdgeInsets.all(8),
                                   ),
-                                  Container(
-                                    child: Icon(Icons.search),
-                                    padding: EdgeInsets.all(5),
-                                  )
-                                ],
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                              ),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(40),
-                                  color: Colors.orange.withOpacity(0.7)),
-                              padding: EdgeInsets.all(1),
-                              margin: EdgeInsets.all(8),
+                                  flex: 1,
+                                ),
+                                Container(
+                                  child: Icon(Icons.search),
+                                  padding: EdgeInsets.all(5),
+                                )
+                              ],
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             ),
-                          ],
-                        ),
-                        margin: EdgeInsets.only(top: 20))),
-                actions: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(
-                      right: 10,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(40),
+                                color: Colors.orange.withOpacity(0.7)),
+                            padding: EdgeInsets.all(1),
+                            margin: EdgeInsets.all(8),
+                          ),
+                        ],
+                      ),
+                      margin: EdgeInsets.only(top: 20))),
+              actions: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(
+                    right: 10,
+                  ),
+                  child: Icon(Icons.shopping_basket),
+                )
+              ],
+            ),
+            SliverFixedExtentList(
+              itemExtent: _itemExtent,
+              delegate: SliverChildListDelegate(
+                [
+                  Container(
+                    child: NestedNavigator(
+                      navigationKey: navigationKey,
+                      initialRoute: '/',
+                      routes: {
+                        // default rout as '/' is necessary!
+                        '/': (context) => HomePage(),
+                        '/two': (context) => PageTwo(),
+                        '/three': (context) => PageThree(),
+                      },
                     ),
-                    child: Icon(Icons.shopping_basket),
-                  )
+                    height: double.infinity,
+                  ),
                 ],
               ),
-            ];
-          },
-          body: NestedNavigator(
-            navigationKey: navigationKey,
-            initialRoute: '/',
-            routes: {
-              // default rout as '/' is necessary!
-              '/': (context) => HomePage(),
-              '/two': (context) => PageTwo(),
-              '/three': (context) => PageThree(),
-            },
-          ),
+            ),
+          ],
         ),
         bottomNavigationBar: new Theme(
             data: Theme.of(context).copyWith(canvasColor: fixedColor),

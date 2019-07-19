@@ -53,6 +53,8 @@ class HomePageState extends State<HomePage> {
     return Scaffold(
         backgroundColor: Colors.white,
         body: ListView(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
           children: <Widget>[
             Container(
               child: CarouselSlider(
