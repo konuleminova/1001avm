@@ -147,7 +147,7 @@ class ProductDetailState extends State<ProductDetail> {
                     Text(
                       "1234567879 AZN tax incl.",
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 21,color: fixedColor.withOpacity(0.8)),
                     )
                   ],
                 ))
