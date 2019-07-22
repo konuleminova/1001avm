@@ -1,3 +1,4 @@
+import 'package:avm1001/utility/constants.dart';
 import 'package:flutter/material.dart';
 
 Widget rowStar() => Row(
@@ -35,5 +36,25 @@ navigate() => Row(
       children: <Widget>[
         Icon(Icons.navigate_before),
         Icon(Icons.navigate_next)
+      ],
+    );
+
+row2Text(String text1, text2) => Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Text(
+          text1,
+          style: TextStyle(
+              fontSize: 19,
+              fontWeight: FontWeight.bold,
+              color: fixedColor.withOpacity(0.7)),
+        ),
+        Text(
+          text2,
+          style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              color: fixedColor.withOpacity(0.7)),
+        ),
       ],
     );

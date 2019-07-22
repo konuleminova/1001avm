@@ -1,5 +1,6 @@
 import 'package:avm1001/item/list_item2.dart';
 import 'package:avm1001/model/product.dart';
+import 'package:avm1001/page/continue_shopping.dart';
 import 'package:avm1001/page/home_page.dart';
 import 'package:avm1001/utility/constants.dart';
 import 'package:avm1001/widget/common_widgets.dart';
@@ -109,8 +110,13 @@ class ProductDetailState extends State<ProductDetail> {
                       children: <TextSpan>[
                         new TextSpan(
                             text: 'Reference: ',
-                            style: new TextStyle(fontWeight: FontWeight.bold,color: fixedColor.withOpacity(0.8))),
-                        new TextSpan(text: 'Hello',style: TextStyle(color: fixedColor.withOpacity(0.8))),
+                            style: new TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: fixedColor.withOpacity(0.8))),
+                        new TextSpan(
+                            text: 'Hello',
+                            style:
+                                TextStyle(color: fixedColor.withOpacity(0.8))),
                       ],
                     ),
                   ),
@@ -125,8 +131,12 @@ class ProductDetailState extends State<ProductDetail> {
                       children: <TextSpan>[
                         new TextSpan(
                             text: 'Condition: ',
-                            style: new TextStyle(fontWeight: FontWeight.bold,color: fixedColor.withOpacity(0.8))),
-                        new TextSpan(text: 'New product',style: TextStyle(color: fixedColor)),
+                            style: new TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: fixedColor.withOpacity(0.8))),
+                        new TextSpan(
+                            text: 'New product',
+                            style: TextStyle(color: fixedColor)),
                       ],
                     ),
                   ),
@@ -141,8 +151,13 @@ class ProductDetailState extends State<ProductDetail> {
                       children: <TextSpan>[
                         new TextSpan(
                             text: '10 ',
-                            style: new TextStyle(fontWeight: FontWeight.bold,color: fixedColor.withOpacity(0.8))),
-                        new TextSpan(text: 'Items',style: TextStyle(color: fixedColor.withOpacity(0.8))),
+                            style: new TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: fixedColor.withOpacity(0.8))),
+                        new TextSpan(
+                            text: 'Items',
+                            style:
+                                TextStyle(color: fixedColor.withOpacity(0.8))),
                       ],
                     ),
                   ),
@@ -182,7 +197,12 @@ class ProductDetailState extends State<ProductDetail> {
                     height: 8.0,
                   ),
                   RaisedButton(
-                    onPressed: null,
+                    onPressed: () {
+                      Route route = MaterialPageRoute(
+                          builder: (context) => ContinueShoppingPage(
+                              product: Product(img: product.img,title: "SAMSUNG SMART 7100 ")));
+                      Navigator.push(context, route);
+                    },
                     child: Padding(
                       child: Text("Add to Cart"),
                       padding: EdgeInsets.all(12.0),
@@ -192,7 +212,9 @@ class ProductDetailState extends State<ProductDetail> {
                     color: Colors.orange,
                     disabledColor: Colors.orange,
                   ),
-                  SizedBox(height: 3.0,),
+                  SizedBox(
+                    height: 3.0,
+                  ),
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
