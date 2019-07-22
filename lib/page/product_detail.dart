@@ -78,27 +78,70 @@ class ProductDetailState extends State<ProductDetail> {
               ),
             ),
             Container(
+                height: 230,
                 margin: EdgeInsets.all(16),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
                       product.title,
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: fixedColor.withOpacity(0.8)),
                     ),
                     rowStar(),
-                    Text(
-                      "Reference:" + product.title,
-                      style: TextStyle(fontSize: 15),
+                    RichText(
+                      text: new TextSpan(
+                        // Note: Styles for TextSpans must be explicitly defined.
+                        // Child text spans will inherit styles from parent
+                        style: new TextStyle(
+                          fontSize: 14.0,
+                          color: Colors.black,
+                        ),
+                        children: <TextSpan>[
+                          new TextSpan(
+                              text: 'Reference: ',
+                              style:
+                                  new TextStyle(fontWeight: FontWeight.bold)),
+                          new TextSpan(text: 'Hello'),
+                        ],
+                      ),
                     ),
-                    Text(
-                      "Condition:" + product.title,
-                      style: TextStyle(fontSize: 15),
+                    RichText(
+                      text: new TextSpan(
+                        // Note: Styles for TextSpans must be explicitly defined.
+                        // Child text spans will inherit styles from parent
+                        style: new TextStyle(
+                          fontSize: 14.0,
+                          color: Colors.black,
+                        ),
+                        children: <TextSpan>[
+                          new TextSpan(
+                              text: 'Condition: ',
+                              style:
+                                  new TextStyle(fontWeight: FontWeight.bold)),
+                          new TextSpan(text: 'New product'),
+                        ],
+                      ),
                     ),
-                    Text(
-                      "10 items",
-                      style: TextStyle(fontSize: 15),
+                    RichText(
+                      text: new TextSpan(
+                        // Note: Styles for TextSpans must be explicitly defined.
+                        // Child text spans will inherit styles from parent
+                        style: new TextStyle(
+                          fontSize: 14.0,
+                          color: Colors.black,
+                        ),
+                        children: <TextSpan>[
+                          new TextSpan(
+                              text: '10 ',
+                              style:
+                                  new TextStyle(fontWeight: FontWeight.bold)),
+                          new TextSpan(text: 'Items'),
+                        ],
+                      ),
                     ),
                     Divider(),
                     Text(
