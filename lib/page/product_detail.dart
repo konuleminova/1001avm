@@ -1,5 +1,6 @@
 import 'package:avm1001/model/product.dart';
 import 'package:avm1001/utility/constants.dart';
+import 'package:avm1001/widget/common_widgets.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetail extends StatefulWidget {
@@ -86,17 +87,24 @@ class ProductDetailState extends State<ProductDetail> {
                       product.title,
                       style: TextStyle(fontSize: 20),
                     ),
+                    rowStar(),
                     Text(
-                      product.title,
+                      "Reference:" + product.title,
                       style: TextStyle(fontSize: 15),
                     ),
                     Text(
-                      product.title,
+                      "Condition:" + product.title,
                       style: TextStyle(fontSize: 15),
                     ),
                     Text(
-                      product.title,
+                      "10 items",
                       style: TextStyle(fontSize: 15),
+                    ),
+                    Divider(),
+                    Text(
+                      "1234567879 AZN tax incl.",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     )
                   ],
                 ))

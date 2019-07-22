@@ -1,5 +1,6 @@
 import 'package:avm1001/utility/constants.dart';
 import 'package:avm1001/model/product.dart';
+import 'package:avm1001/widget/common_widgets.dart';
 import 'package:flutter/material.dart';
 
 class ListItemTwo extends StatefulWidget {
@@ -57,17 +58,7 @@ class ListItemTwoState extends State<ListItemTwo> {
                       width: 200,
                       margin: EdgeInsets.only(top: 8),
                     ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        RatingStar(),
-                        RatingStar(),
-                        RatingStar(),
-                        RatingStar(),
-                        RatingStar(),
-                      ],
-                    ),
+                    rowStar(),
                     SizedBox(
                       height: 20,
                     ),
@@ -161,10 +152,4 @@ class ListItemTwoState extends State<ListItemTwo> {
           elevation: 1.0,
         ));
   }
-
-  RatingStar() => Icon(
-        Icons.star_border,
-        color: Colors.orange,
-        size: 18,
-      );
 }
