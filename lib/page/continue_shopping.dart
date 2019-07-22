@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 class ContinueShoppingPage extends StatelessWidget {
   Product product;
 
-
   ContinueShoppingPage({this.product});
 
   @override
@@ -29,7 +28,10 @@ class ContinueShoppingPage extends StatelessWidget {
                 Align(
                   child: Padding(
                     padding: EdgeInsets.all(16.0),
-                    child: Icon(Icons.clear,color: fixedColor.withOpacity(0.4),),
+                    child: Icon(
+                      Icons.clear,
+                      color: fixedColor.withOpacity(0.4),
+                    ),
                   ),
                   alignment: Alignment.topRight,
                 )
@@ -37,7 +39,9 @@ class ContinueShoppingPage extends StatelessWidget {
             ),
             height: 400,
           ),
-          SizedBox(height: 16.0,),
+          SizedBox(
+            height: 16.0,
+          ),
           Container(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,7 +54,9 @@ class ContinueShoppingPage extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       color: fixedColor.withOpacity(0.8)),
                 ),
-                SizedBox(height: 8.0,),
+                SizedBox(
+                  height: 8.0,
+                ),
                 row2Text("Quantity", "2"),
                 row2Text("Total", "134567 AZN"),
                 row2Text("Total Products (tax incl)", "2456634567 AzN"),
@@ -59,9 +65,44 @@ class ContinueShoppingPage extends StatelessWidget {
                 row2Text("Total(tax incl)", "2345677890 AZN"),
               ],
             ),
-            margin: EdgeInsets.all(8.0),
+            margin: EdgeInsets.all(16.0),
             height: 240,
             color: Colors.white,
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 16.0,right: 16.0),
+            child: RaisedButton(
+              onPressed: () {},
+              child: Padding(
+                child: Text(
+                  "Continue Shopping",
+                  style: TextStyle(color: fixedColor.withOpacity(0.5)),
+                ),
+                padding: EdgeInsets.all(12.0),
+              ),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(40.0)),
+              color: Colors.orange,
+              disabledColor: Colors.orange,
+            ),
+          ),
+          SizedBox(height: 8.0,),
+          Padding(
+            padding: EdgeInsets.only(left: 16.0,right: 16.0),
+            child: RaisedButton(
+              onPressed: () {},
+              child: Padding(
+                child: Text(
+                  "Checkout",
+                  style: TextStyle(color: fixedColor.withOpacity(0.5)),
+                ),
+                padding: EdgeInsets.all(12.0),
+              ),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(40.0)),
+              color: Colors.orange,
+              disabledColor: Colors.orange,
+            ),
           )
         ],
       ),
