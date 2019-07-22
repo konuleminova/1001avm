@@ -3,6 +3,7 @@ import 'package:avm1001/utility/constants.dart';
 import 'package:avm1001/item/list_item1.dart';
 import 'package:avm1001/item/list_item2.dart';
 import 'package:avm1001/model/product.dart';
+import 'package:avm1001/widget/common_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -15,7 +16,6 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-
   bool isOnclick = false;
 
   bool isOnclick2 = false;
@@ -140,13 +140,7 @@ class HomePageState extends State<HomePage> {
             SizedBox(
               height: 30.0,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Icon(Icons.navigate_before),
-                Icon(Icons.navigate_next)
-              ],
-            ),
+            navigate(),
             SizedBox(
               height: 20,
             ),
@@ -170,7 +164,7 @@ class HomePageState extends State<HomePage> {
                                 builder: (context) => ProductDetail(
                                     product: Product(
                                         img: productImgList[index],
-                                        title:  "THOSHIBA")));
+                                        title: "THOSHIBA")));
                             Navigator.push(context, route);
                           },
                         ));

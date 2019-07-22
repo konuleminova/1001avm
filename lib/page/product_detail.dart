@@ -303,6 +303,7 @@ class ProductDetailState extends State<ProductDetail> {
                   SizedBox(
                     height: 20.0,
                   ),
+                  navigate(),
                   Container(
                       height: 550.0,
                       padding: EdgeInsets.only(left: 4, right: 4),

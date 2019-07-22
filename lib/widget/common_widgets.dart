@@ -29,3 +29,11 @@ divider() => new SizedBox(
         ),
       ),
     );
+
+navigate() => Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Icon(Icons.navigate_before),
+        Icon(Icons.navigate_next)
+      ],
+    );
