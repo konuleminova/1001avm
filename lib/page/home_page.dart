@@ -1,3 +1,4 @@
+import 'package:avm1001/page/product_detail.dart';
 import 'package:avm1001/utility/constants.dart';
 import 'package:avm1001/item/list_item1.dart';
 import 'package:avm1001/item/list_item2.dart';
@@ -32,7 +33,7 @@ class HomePageState extends State<HomePage> {
 
   bool isOnclick = false;
 
-  bool isOnclick2=false;
+  bool isOnclick2 = false;
 
   List<T> map<T>(List list, Function handler) {
     List<T> result = [];
@@ -93,10 +94,15 @@ class HomePageState extends State<HomePage> {
               shrinkWrap: true,
               physics: ClampingScrollPhysics(),
               itemBuilder: (BuildContext context, int index) {
-                return ListItemOne(
-                  title: "New Iphone in our store!",
-                  img: imgList[index],
-                  subtitle: "Shop now",
+                return GestureDetector(
+                  child: ListItemOne(
+                    title: "New Iphone in our store!",
+                    img: imgList[index],
+                    subtitle: "Shop now",
+                  ),
+                  onTap: () {
+                    // Navigator.pushNamed(context, "/product_detail");
+                  },
                 );
               },
               itemCount: 3,
@@ -166,14 +172,23 @@ class HomePageState extends State<HomePage> {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (BuildContext context, int index) {
                     return Padding(
-                      padding: EdgeInsets.all(4),
-                      child: ListItemTwo(
-                        product: Product(
-                            img: productImgList[index],
-                            title: "THOSHIBA",
-                            price: "1234565678 AZN"),
-                      ),
-                    );
+                        padding: EdgeInsets.all(4),
+                        child: GestureDetector(
+                          child: ListItemTwo(
+                            product: Product(
+                                img: productImgList[index],
+                                title: "THOSHIBA",
+                                price: "1234565678 AZN"),
+                          ),
+                          onTap: () {
+                            Route route = MaterialPageRoute(
+                                builder: (context) => ProductDetail(
+                                    product: Product(
+                                        img: productImgList[index],
+                                        title:  "THOSHIBA")));
+                            Navigator.push(context, route);
+                          },
+                        ));
                   },
                   itemCount: 3,
                 )),
@@ -247,7 +262,7 @@ class HomePageState extends State<HomePage> {
                               : Colors.white),
                       decoration: BoxDecoration(
                           color:
-                          isOnclick2 ? Colors.orange : Colors.transparent),
+                              isOnclick2 ? Colors.orange : Colors.transparent),
                       padding: EdgeInsets.all(3),
                     ),
                   ),

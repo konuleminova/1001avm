@@ -1,3 +1,4 @@
+import 'package:avm1001/page/product_detail.dart';
 import 'package:avm1001/utility/constants.dart';
 import 'package:avm1001/utility/nested_navigator.dart';
 import 'package:avm1001/page/home_page.dart';
@@ -191,6 +192,7 @@ class CorePageState extends State<CorePage> {
                         '/': (context) => HomePage(),
                         '/two': (context) => PageTwo(),
                         '/three': (context) => PageThree(),
+                        '/product_detail': (context) => ProductDetail(),
                       },
                     ),
                     height: double.infinity,
