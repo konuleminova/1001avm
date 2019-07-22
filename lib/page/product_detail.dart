@@ -200,11 +200,14 @@ class ProductDetailState extends State<ProductDetail> {
                     onPressed: () {
                       Route route = MaterialPageRoute(
                           builder: (context) => ContinueShoppingPage(
-                              product: Product(img: product.img,title: "SAMSUNG SMART 7100 ")));
+                              product: Product(
+                                  img: product.img,
+                                  title: "SAMSUNG SMART 7100 ")));
                       Navigator.push(context, route);
                     },
                     child: Padding(
-                      child: Text("Add to Cart"),
+                      child: Text("Add to Cart",
+                          style: TextStyle(color: fixedColor.withOpacity(0.6))),
                       padding: EdgeInsets.all(12.0),
                     ),
                     shape: RoundedRectangleBorder(
