@@ -81,7 +81,7 @@ class ProductDetailState extends State<ProductDetail> {
               ),
             ),
             Container(
-              height: 550,
+              height: 600,
               margin: EdgeInsets.all(16),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -191,7 +191,7 @@ class ProductDetailState extends State<ProductDetail> {
                     disabledColor: Colors.orange,
                   ),
                   Row(
-                    mainAxisSize: MainAxisSize.min,
+                    mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       Container(
@@ -276,7 +276,19 @@ class ProductDetailState extends State<ProductDetail> {
                       child: Text(
                         "CUSTOM",
                         style: TextStyle(color: fixedColor.withOpacity(0.8)),
-                      ))
+                      )),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  Text(
+                    "17 other products in the same category",
+                    style: TextStyle(
+                        color: fixedColor.withOpacity(0.7), fontSize: 20.0),
+                  ),
+                  SizedBox(
+                    height: 8.0,
+                  ),
+                  divider()
                 ],
               ),
             ),
