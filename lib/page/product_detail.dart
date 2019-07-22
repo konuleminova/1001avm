@@ -1,4 +1,6 @@
+import 'package:avm1001/item/list_item2.dart';
 import 'package:avm1001/model/product.dart';
+import 'package:avm1001/page/home_page.dart';
 import 'package:avm1001/utility/constants.dart';
 import 'package:avm1001/widget/common_widgets.dart';
 import 'package:flutter/material.dart';
@@ -81,7 +83,7 @@ class ProductDetailState extends State<ProductDetail> {
               ),
             ),
             Container(
-              height: 600,
+              height: 550,
               margin: EdgeInsets.all(16),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -277,21 +279,60 @@ class ProductDetailState extends State<ProductDetail> {
                         "CUSTOM",
                         style: TextStyle(color: fixedColor.withOpacity(0.8)),
                       )),
-                  SizedBox(
-                    height: 20.0,
-                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 8.0,
+            ),
+            Container(
+              margin: EdgeInsets.all(16.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
                   Text(
                     "17 other products in the same category",
                     style: TextStyle(
                         color: fixedColor.withOpacity(0.7), fontSize: 20.0),
                   ),
                   SizedBox(
-                    height: 8.0,
+                    height: 20.0,
                   ),
-                  divider()
+                  divider(),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  Container(
+                      height: 550.0,
+                      padding: EdgeInsets.only(left: 4, right: 4),
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Padding(
+                              padding: EdgeInsets.all(4),
+                              child: GestureDetector(
+                                child: ListItemTwo(
+                                  product: Product(
+                                      img: productImgList[index],
+                                      title: "THOSHIBA",
+                                      price: "1234565678 AZN"),
+                                ),
+                                onTap: () {
+                                  Route route = MaterialPageRoute(
+                                      builder: (context) => ProductDetail(
+                                          product: Product(
+                                              img: productImgList[index],
+                                              title: "THOSHIBA")));
+                                  Navigator.push(context, route);
+                                },
+                              ));
+                        },
+                        itemCount: 3,
+                      )),
                 ],
               ),
-            ),
+            )
           ],
         ));
   }
