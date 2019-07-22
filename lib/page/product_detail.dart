@@ -109,8 +109,8 @@ class ProductDetailState extends State<ProductDetail> {
                       children: <TextSpan>[
                         new TextSpan(
                             text: 'Reference: ',
-                            style: new TextStyle(fontWeight: FontWeight.bold)),
-                        new TextSpan(text: 'Hello'),
+                            style: new TextStyle(fontWeight: FontWeight.bold,color: fixedColor.withOpacity(0.8))),
+                        new TextSpan(text: 'Hello',style: TextStyle(color: fixedColor.withOpacity(0.8))),
                       ],
                     ),
                   ),
@@ -125,8 +125,8 @@ class ProductDetailState extends State<ProductDetail> {
                       children: <TextSpan>[
                         new TextSpan(
                             text: 'Condition: ',
-                            style: new TextStyle(fontWeight: FontWeight.bold)),
-                        new TextSpan(text: 'New product'),
+                            style: new TextStyle(fontWeight: FontWeight.bold,color: fixedColor.withOpacity(0.8))),
+                        new TextSpan(text: 'New product',style: TextStyle(color: fixedColor)),
                       ],
                     ),
                   ),
@@ -141,8 +141,8 @@ class ProductDetailState extends State<ProductDetail> {
                       children: <TextSpan>[
                         new TextSpan(
                             text: '10 ',
-                            style: new TextStyle(fontWeight: FontWeight.bold)),
-                        new TextSpan(text: 'Items'),
+                            style: new TextStyle(fontWeight: FontWeight.bold,color: fixedColor.withOpacity(0.8))),
+                        new TextSpan(text: 'Items',style: TextStyle(color: fixedColor.withOpacity(0.8))),
                       ],
                     ),
                   ),
