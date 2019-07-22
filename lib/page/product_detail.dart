@@ -237,7 +237,7 @@ class ProductDetailState extends State<ProductDetail> {
                   Divider(),
                   Text(
                     'Descrioption Lorem ipsum.LED 43"; 9.6 kg; 97.5 x 85.2 x 57.1 Səs gücü 20w; Stereo - var; Wi-Fi - var',
-                    style: TextStyle(color: fixedColor),
+                    style: TextStyle(color: fixedColor.withOpacity(0.8)),
                   ),
                   SizedBox(
                     height: 20.0,
