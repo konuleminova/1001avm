@@ -78,7 +78,7 @@ class ProductDetailState extends State<ProductDetail> {
               ),
             ),
             Container(
-                height: 230,
+                height: 400,
                 margin: EdgeInsets.all(16),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -146,8 +146,48 @@ class ProductDetailState extends State<ProductDetail> {
                     Divider(),
                     Text(
                       "1234567879 AZN tax incl.",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 21,color: fixedColor.withOpacity(0.8)),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 21,
+                          color: fixedColor.withOpacity(0.8)),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          "QUANTITY",
+                          style: TextStyle(
+                              color: fixedColor.withOpacity(0.6),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16),
+                        ),
+                        SizedBox(
+                          width: 20.0,
+                        ),
+                        Container(
+                          child: Text("1"),
+                          padding: EdgeInsets.all(5),
+                          width: 50,
+                          height: 30,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: fixedColor.withOpacity(0.5))),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 8.0,
+                    ),
+                    RaisedButton(
+                      onPressed: null,
+                      child: Padding(
+                        child: Text("Add to Cart"),
+                        padding: EdgeInsets.all(12.0),
+                      ),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40.0)),
+                      color: Colors.orange,
+                      disabledColor: Colors.orange,
                     )
                   ],
                 ))
