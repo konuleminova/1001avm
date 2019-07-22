@@ -78,11 +78,12 @@ class ProductDetailState extends State<ProductDetail> {
               ),
             ),
             Container(
-                height: 400,
+                height: 550,
                 margin: EdgeInsets.all(16),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Text(
                       product.title,
@@ -171,7 +172,7 @@ class ProductDetailState extends State<ProductDetail> {
                           height: 30,
                           decoration: BoxDecoration(
                               border: Border.all(
-                                  color: fixedColor.withOpacity(0.5))),
+                                  color: fixedColor.withOpacity(0.2))),
                         )
                       ],
                     ),
@@ -188,9 +189,53 @@ class ProductDetailState extends State<ProductDetail> {
                           borderRadius: BorderRadius.circular(40.0)),
                       color: Colors.orange,
                       disabledColor: Colors.orange,
+                    ),Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Container(
+                          child: Icon(Icons.mail_outline, color: fixedColor),
+                          padding: EdgeInsets.all(8.0),
+                          decoration: BoxDecoration(
+                              border: Border.all(color: fixedColor.withOpacity(0.2))),
+                        ),
+                        Container(
+                          child: Icon(Icons.share, color: fixedColor),
+                          padding: EdgeInsets.all(8.0),
+                          decoration: BoxDecoration(
+                              border: Border.all(color: fixedColor.withOpacity(0.2))),
+                        ),
+                        Container(
+                          child: Icon(Icons.print, color: fixedColor),
+                          padding: EdgeInsets.all(8.0),
+                          decoration: BoxDecoration(
+                              border: Border.all(color: fixedColor.withOpacity(0.2))),
+                        ),
+                        Container(
+                          child: Icon(Icons.favorite, color: fixedColor),
+                          padding: EdgeInsets.all(8.0),
+                          decoration: BoxDecoration(
+                              border: Border.all(color: fixedColor.withOpacity(0.2))),
+                        ),
+                        Container(
+                          child: Icon(Icons.redo, color: fixedColor),
+                          padding: EdgeInsets.all(8.0),
+                          decoration: BoxDecoration(
+                              border: Border.all(color: fixedColor.withOpacity(0.2))),
+                        ),
+                        SizedBox(
+                          width: 100,
+                        )
+                      ],
+                    ),
+                    Divider(),
+                    Text(
+                      'Descrioption Lorem ipsum.LED 43"; 9.6 kg; 97.5 x 85.2 x 57.1 Səs gücü 20w; Stereo - var; Wi-Fi - var',
+                      style: TextStyle(color: fixedColor),
                     )
                   ],
-                ))
+                ),),
+
           ],
         ));
   }
