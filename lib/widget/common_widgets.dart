@@ -45,14 +45,14 @@ row2Text(String text1, text2) => Row(
         Text(
           text1,
           style: TextStyle(
-              fontSize: 19,
+              fontSize: 16,
               fontWeight: FontWeight.bold,
               color: fixedColor.withOpacity(0.7)),
         ),
         Text(
           text2,
           style: TextStyle(
-              fontSize: 15,
+              fontSize: 12,
               fontWeight: FontWeight.bold,
               color: fixedColor.withOpacity(0.7)),
         ),
