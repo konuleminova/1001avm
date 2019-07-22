@@ -192,6 +192,7 @@ class ProductDetailState extends State<ProductDetail> {
                     color: Colors.orange,
                     disabledColor: Colors.orange,
                   ),
+                  SizedBox(height: 3.0,),
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
